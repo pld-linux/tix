@@ -17,7 +17,7 @@ Patch2:		tix-autoconf.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	tcl-devel >= 8.0.5-31
 BuildRequires:	tk-devel >= 8.0.5-31
-Buildroot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description 
 Tix is a add on for the tk widget set which adds many complex widgets which
