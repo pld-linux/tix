@@ -1,0 +1,12 @@
+diff -Nur Tix4.1.0/unix/Makefile.in Tix4.1.0.pld/unix/Makefile.in
+--- Tix4.1.0/unix/Makefile.in	Wed Jul  9 22:33:48 1997
++++ Tix4.1.0.pld/unix/Makefile.in	Wed Jun 16 09:04:02 1999
+@@ -40,7 +40,7 @@
+ INCLUDE_DIR =	$(prefix)/include
+ 
+ # Top-level directory for manual entries:
+-MAN_DIR =	$(prefix)/man
++MAN_DIR =	$(prefix)/share/man
+ 
+ # Directory in which to install manual entry for wish:
+ MAN1_DIR =	$(MAN_DIR)/man1

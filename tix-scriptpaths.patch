@@ -1,0 +1,18 @@
+diff -u --recursive --new-file Tix4.1.0.macro/library/bitmaps/mktransgif.tcl Tix4.1.0/library/bitmaps/mktransgif.tcl
+--- Tix4.1.0.macro/library/bitmaps/mktransgif.tcl	Sat Jan 18 03:59:43 1997
++++ Tix4.1.0/library/bitmaps/mktransgif.tcl	Mon Jan 25 20:25:19 1999
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/tclsh
++#!/usr/bin/tclsh
+ 
+ set dont(plusarm.gif)  1
+ set dont(minusarm.gif) 1
+diff -u --recursive --new-file Tix4.1.0.macro/library/pref/tixmkpref Tix4.1.0/library/pref/tixmkpref
+--- Tix4.1.0.macro/library/pref/tixmkpref	Sat Jan 18 04:00:14 1997
++++ Tix4.1.0/library/pref/tixmkpref	Mon Jan 25 20:25:26 1999
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/tclsh
++#!/usr/bin/tclsh
+ # Undocumented program. Don't use it.
+ #
+ # Usage:
