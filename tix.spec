@@ -82,13 +82,13 @@ Tix - programy demostracjne.
 
 %build
 cd unix
-aclocal; autoconf
+%{__aclocal}; autoconf
 %configure \
 	--disable-cdemos \
 	--enable-shared
 
 cd tk8.3
-aclocal; autoconf
+%{__aclocal}; autoconf
 %configure \
 	--disable-cdemos \
 	--enable-shared
