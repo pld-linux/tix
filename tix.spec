@@ -91,7 +91,7 @@ aclocal; autoconf
 	--disable-cdemos \
 	--enable-shared
 
-make CFLAGS="$RPM_OPT_FLAGS -D_REENTRANT -w"
+%{__make} CFLAGS="$RPM_OPT_FLAGS -D_REENTRANT -w"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -99,7 +99,7 @@ install -d $RPM_BUILD_ROOT{%{_mandir},/usr/src/examples/%{name}}
 
 (cd unix 
 LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir} \
-make install \
+%{__make} install \
 	prefix=$RPM_BUILD_ROOT%{_prefix} \
 	LIB_DIR=$RPM_BUILD_ROOT%{_libdir} \
 	BIN_DIR=$RPM_BUILD_ROOT%{_bindir}
@@ -108,7 +108,7 @@ mv $RPM_BUILD_ROOT%{_mandir}/mann/tixwish.1 \
 	$RPM_BUILD_ROOT%{_mandir}/man1
 
 (cd tk8.0
-make install prefix=$RPM_BUILD_ROOT%{_prefix} \
+%{__make} install prefix=$RPM_BUILD_ROOT%{_prefix} \
 	LIB_DIR=$RPM_BUILD_ROOT%{_libdir} \
 	BIN_DIR=$RPM_BUILD_ROOT%{_bindir} ) )
 
