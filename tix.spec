@@ -4,17 +4,22 @@ Summary(fr):	Nombreux meta-widgets (comme les bloc-notes) pour tk
 Summary(pl):	Wiele widgetÛw (takich jak notepad) dla tk
 Summary(tr):	Tk iÁin ek aray¸z elemanlar˝ (not defterleri v.b.)
 Name:		tix
-Version:	4.1.0.007
-Release:	5
+Version:	8.1.3
+Release:	1
 Epoch:		1
-Source0:	ftp://ftp.xpi.com/pub/ioi/Tix%{version}.tar.gz
 License:	BSD
 Group:		Development/Languages/Tcl
 Group(de):	Entwicklung/Sprachen/Tcl
+Group(es):	Desarrollo/Lenguages/Tcl
+Group(fr):	Development/Langues/Tcl
 Group(pl):	Programowanie/JÍzyki/Tcl
+Group(pt):	Desenvolvimento/LÌnguas/Tcl
+Group(ru):	Ú¡⁄“¡¬œ‘À¡/Ò⁄ŸÀ…/Tcl
+Source0:	http://prdownloads.sourceforge.net/tix/%{name}-%{version}.tar.gz
 Patch0:		%{name}-scriptpaths.patch
 Patch1:		%{name}-fhs.patch
 Patch2:		%{name}-autoconf.patch
+URL:		http://tix.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -54,7 +59,11 @@ Summary:	Tix header files and development documentation
 Summary(pl):	Pliki nag≥Ûwkowe oraz dokumentacja do Tix
 Group:		Development/Languages/Tcl
 Group(de):	Entwicklung/Sprachen/Tcl
+Group(es):	Desarrollo/Lenguages/Tcl
+Group(fr):	Development/Langues/Tcl
 Group(pl):	Programowanie/JÍzyki/Tcl
+Group(pt):	Desenvolvimento/LÌnguas/Tcl
+Group(ru):	Ú¡⁄“¡¬œ‘À¡/Ò⁄ŸÀ…/Tcl
 Requires:	%{name} = %{version}
 
 %description devel
@@ -68,7 +77,11 @@ Summary:	Tix - demo programs
 Summary(pl):	Tix - programy demostracjne
 Group:		Development/Languages/Tcl
 Group(de):	Entwicklung/Sprachen/Tcl
+Group(es):	Desarrollo/Lenguages/Tcl
+Group(fr):	Development/Langues/Tcl
 Group(pl):	Programowanie/JÍzyki/Tcl
+Group(pt):	Desenvolvimento/LÌnguas/Tcl
+Group(ru):	Ú¡⁄“¡¬œ‘À¡/Ò⁄ŸÀ…/Tcl
 Requires:	%{name} = %{version}
 
 %description demo
@@ -78,7 +91,7 @@ Tix - demo programs.
 Tix - programy demostracjne.
 
 %prep
-%setup  -q -n Tix%{version}
+%setup  -q
 
 %patch0 -p1
 %patch1 -p1
@@ -91,7 +104,7 @@ aclocal; autoconf
 	--disable-cdemos \
 	--enable-shared
 
-cd tk8.0
+cd tk8.3
 aclocal; autoconf
 %configure \
 	--disable-cdemos \
@@ -108,22 +121,26 @@ LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir} \
 %{__make} install \
 	prefix=$RPM_BUILD_ROOT%{_prefix} \
 	LIB_DIR=$RPM_BUILD_ROOT%{_libdir} \
-	BIN_DIR=$RPM_BUILD_ROOT%{_bindir}
+	BIN_DIR=$RPM_BUILD_ROOT%{_bindir} \
+	TIX_LIBRARY=$RPM_BUILD_ROOT%{_datadir}/tix8.1
 
 mv -f $RPM_BUILD_ROOT%{_mandir}/mann/tixwish.1 \
 	$RPM_BUILD_ROOT%{_mandir}/man1
 
-(cd tk8.0
+(cd tk8.3
 %{__make} install prefix=$RPM_BUILD_ROOT%{_prefix} \
 	LIB_DIR=$RPM_BUILD_ROOT%{_libdir} \
 	BIN_DIR=$RPM_BUILD_ROOT%{_bindir} ) )
 
-mv -f	$RPM_BUILD_ROOT%{_bindir}/tixwish4.1.8.0 \
+#mv -f	$RPM_BUILD_ROOT%{_bindir}/tixwish4.1.8.0 \
+#	$RPM_BUILD_ROOT%{_bindir}/tixwish
+
+mv -f $RPM_BUILD_ROOT%{_datadir}/tix8.1/demos \
+	$RPM_BUILD_ROOT%{_prefix}/src/examples/%{name}
+mv -f $RPM_BUILD_ROOT%{_bindir}/tixwish8.1.8.3 \
 	$RPM_BUILD_ROOT%{_bindir}/tixwish
 
-mv -f $RPM_BUILD_ROOT%{_libdir}/tix4.1/demos $RPM_BUILD_ROOT%{_prefix}/src/examples/%{name}
-
-gzip -9nf docs/{*.txt,pguide-tix4.0.ps}
+gzip -9nf docs/*.txt
 
 %post   -p /sbin/ldconfig 
 %postun -p /sbin/ldconfig
@@ -136,19 +153,20 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/*.so
 
-%dir %{_libdir}/tix4.1
-%{_libdir}/tix4.1/*.tcl
-%{_libdir}/tix4.1/tclIndex
+%dir %{_datadir}/tix8.1
+%{_datadir}/tix8.1/*.tcl
+%{_datadir}/tix8.1/tclIndex
 
-%{_libdir}/tix4.1/bitmaps
-%{_libdir}/tix4.1/pref
+%{_datadir}/tix8.1/bitmaps
+%{_datadir}/tix8.1/pref
 %{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
-%doc docs/*.gz
+%doc docs/*.gz docs/{pdf,tix-book}
+%attr(755,root,root) %{_libdir}/tixConfig.sh
 %{_includedir}/*.h
-%{_mandir}/mann/*
+%{_mandir}/man[3n]/*
 
 %files demo
 %defattr(644,root,root,755)
