@@ -1,11 +1,13 @@
+%define		major 8.1
+%define		tkmajor 8.4
 Summary:	Many metawidgets (such as notepads) for tk
 Summary(de):	Zahlreiche Metawidgets (wie etwa Notepads) für tk
 Summary(fr):	Nombreux meta-widgets (comme les bloc-notes) pour tk
 Summary(pl):	Wiele widgetów (takich jak notepad) dla tk
 Summary(tr):	Tk için ek arayüz elemanlarý (not defterleri v.b.)
 Name:		tix
-Version:	8.1.4
-Release:	2
+Version:	%{major}.4
+Release:	3
 Epoch:		1
 License:	BSD
 Group:		Development/Languages/Tcl
@@ -14,12 +16,13 @@ Source0:	http://dl.sourceforge.net/tix/%{name}-%{version}.tar.gz
 Patch0:		%{name}-scriptpaths.patch
 Patch1:		%{name}-fhs.patch
 Patch2:		%{name}-autoconf.patch
+Patch3:		%{name}-soname.patch
 URL:		http://tix.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	tcl-devel >= 8.3.2-10
-BuildRequires:	tk-devel >= 8.3.2-8
+BuildRequires:	tcl-devel >= 8.4.3
+BuildRequires:	tk-devel >= 8.4.3
 BuildRequires:	which
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -79,6 +82,7 @@ Tix - programy demostracjne.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1 -b .wiget
 
 %build
 cd unix
@@ -88,7 +92,7 @@ cd unix
 	--disable-cdemos \
 	--enable-shared
 
-cd tk8.3
+cd tk%{tkmajor}
 %{__aclocal}
 %{__autoconf}
 %configure \
@@ -107,12 +111,12 @@ LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir} \
 	prefix=$RPM_BUILD_ROOT%{_prefix} \
 	LIB_DIR=$RPM_BUILD_ROOT%{_libdir} \
 	BIN_DIR=$RPM_BUILD_ROOT%{_bindir} \
-	TIX_LIBRARY=$RPM_BUILD_ROOT%{_datadir}/tix8.1
+	TIX_LIBRARY=$RPM_BUILD_ROOT%{_datadir}/tix%{major}
 
 mv -f $RPM_BUILD_ROOT%{_mandir}/mann/tixwish.1 \
 	$RPM_BUILD_ROOT%{_mandir}/man1
 
-cd tk8.3
+cd tk%{tkmajor}
 %{__make} install prefix=$RPM_BUILD_ROOT%{_prefix} \
 	LIB_DIR=$RPM_BUILD_ROOT%{_libdir} \
 	BIN_DIR=$RPM_BUILD_ROOT%{_bindir}
@@ -121,9 +125,9 @@ cd ../..
 #mv -f	$RPM_BUILD_ROOT%{_bindir}/tixwish4.1.8.0 \
 #	$RPM_BUILD_ROOT%{_bindir}/tixwish
 
-mv -f $RPM_BUILD_ROOT%{_datadir}/tix8.1/demos \
+mv -f $RPM_BUILD_ROOT%{_datadir}/tix%{major}/demos \
 	$RPM_BUILD_ROOT%{_prefix}/src/examples/%{name}
-mv -f $RPM_BUILD_ROOT%{_bindir}/tixwish8.1.8.3 \
+mv -f $RPM_BUILD_ROOT%{_bindir}/tixwish%{major}.%{tkmajor} \
 	$RPM_BUILD_ROOT%{_bindir}/tixwish
 
 ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtix%{version}*.so.*.*` \
@@ -146,12 +150,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/*.so.*.*
 
-%dir %{_datadir}/tix8.1
-%{_datadir}/tix8.1/*.tcl
-%{_datadir}/tix8.1/tclIndex
+%dir %{_datadir}/tix%{major}
+%{_datadir}/tix%{major}/*.tcl
+%{_datadir}/tix%{major}/tclIndex
 
-%{_datadir}/tix8.1/bitmaps
-%{_datadir}/tix8.1/pref
+%{_datadir}/tix%{major}/bitmaps
+%{_datadir}/tix%{major}/pref
 %{_mandir}/man1/*
 
 %files devel
