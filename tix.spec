@@ -7,7 +7,7 @@ Summary(pl):	Wiele widgetów (takich jak notepad) dla tk
 Summary(tr):	Tk için ek arayüz elemanlarý (not defterleri v.b.)
 Name:		tix
 Version:	%{major}.4
-Release:	3
+Release:	4
 Epoch:		1
 License:	BSD
 Group:		Development/Languages/Tcl
@@ -122,22 +122,19 @@ cd tk%{tkmajor}
 	BIN_DIR=$RPM_BUILD_ROOT%{_bindir}
 cd ../..
 
-#mv -f	$RPM_BUILD_ROOT%{_bindir}/tixwish4.1.8.0 \
-#	$RPM_BUILD_ROOT%{_bindir}/tixwish
-
 mv -f $RPM_BUILD_ROOT%{_datadir}/tix%{major}/demos \
 	$RPM_BUILD_ROOT%{_prefix}/src/examples/%{name}
 mv -f $RPM_BUILD_ROOT%{_bindir}/tixwish%{major}.%{tkmajor} \
 	$RPM_BUILD_ROOT%{_bindir}/tixwish
 
-ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtix%{version}*.so.*.*` \
+ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtix%{major}*.so.*.*` \
 	$RPM_BUILD_ROOT%{_libdir}/libtix.so
-ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtixsam*.so.*.*` \
+ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtixsam%{major}*.so.*.*` \
 	$RPM_BUILD_ROOT%{_libdir}/libtixsam.so
-ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtix%{version}*.so.*.*` \
-	$RPM_BUILD_ROOT%{_libdir}/libtix%{version}.so
-ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtixsam*.so.*.*` \
-	$RPM_BUILD_ROOT%{_libdir}/libtixsam%{version}.so
+ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtix%{major}*.so.*.*` \
+	$RPM_BUILD_ROOT%{_libdir}/libtix%{major}.so
+ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtixsam%{major}*.so.*.*` \
+	$RPM_BUILD_ROOT%{_libdir}/libtixsam%{major}.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
