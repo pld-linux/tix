@@ -137,7 +137,7 @@ ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtixsam%{major}*.so.*.*` \
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
