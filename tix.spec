@@ -103,7 +103,7 @@ cd tk%{tkmajor}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_mandir},%{_prefix}/src/examples/%{name}}
+install -d $RPM_BUILD_ROOT{%{_mandir},%{_examplesdir}/%{name}}
 
 cd unix
 LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir} \
@@ -123,7 +123,7 @@ cd tk%{tkmajor}
 cd ../..
 
 mv -f $RPM_BUILD_ROOT%{_datadir}/tix%{major}/demos \
-	$RPM_BUILD_ROOT%{_prefix}/src/examples/%{name}
+	$RPM_BUILD_ROOT%{_examplesdir}/%{name}
 mv -f $RPM_BUILD_ROOT%{_bindir}/tixwish%{major}.%{tkmajor} \
 	$RPM_BUILD_ROOT%{_bindir}/tixwish
 
@@ -165,5 +165,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files demo
 %defattr(644,root,root,755)
-%dir %{_prefix}/src/examples/%{name}
-%attr(-,root,root) %{_prefix}/src/examples/%{name}/*
+%dir %{_examplesdir}/%{name}
+%attr(-,root,root) %{_examplesdir}/%{name}/*
