@@ -5,7 +5,7 @@ Summary(pl):	Wiele widgetów (takich jak notepad) dla tk
 Summary(tr):	Tk için ek arayüz elemanlarý (not defterleri v.b.)
 Name:		tix
 Version:	4.1.0.007
-Release:	4
+Release:	5
 Epoch:		1
 Source0:	ftp://ftp.xpi.com/pub/ioi/Tix%{version}.tar.gz
 License:	BSD
@@ -16,6 +16,8 @@ Patch0:		%{name}-scriptpaths.patch
 Patch1:		%{name}-fhs.patch
 Patch2:		%{name}-autoconf.patch
 BuildRequires:	XFree86-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	tcl-devel >= 8.3.2
 BuildRequires:	tk-devel >= 8.3.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
