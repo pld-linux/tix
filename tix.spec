@@ -14,6 +14,9 @@ Group(pl):	Programowanie/Jêzyki/Tcl
 Patch0:		tix-scriptpaths.patch
 Patch1:		tix-fhs.patch
 Patch2:		tix-autoconf.patch
+BuildRequires:	XFree86-devel
+BuildRequires:	tcl-devel >= 8.0.5-31
+BuildRequires:	tk-devel >= 8.0.5-31
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %description 
