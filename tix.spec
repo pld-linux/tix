@@ -5,11 +5,12 @@ Summary(pl):	Wiele widgetów (takich jak notepad) dla tk
 Summary(tr):	Tk için ek arayüz elemanlarý (not defterleri v.b.)
 Name:		tix
 Version:	8.1.3
-Release:	2
+Release:	3
 Epoch:		1
 License:	BSD
 Group:		Development/Languages/Tcl
 Source0:	http://prdownloads.sourceforge.net/tix/%{name}-%{version}.tar.gz
+# Source0-md5:	5c8523f2a97183a385e8bb6b2855f18d
 Patch0:		%{name}-scriptpaths.patch
 Patch1:		%{name}-fhs.patch
 Patch2:		%{name}-autoconf.patch
