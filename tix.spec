@@ -95,7 +95,7 @@ aclocal; autoconf
 	--disable-cdemos \
 	--enable-shared
 
-%{__make} CFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g} -D_REENTRANT -w"
+%{__make} CFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS} -D_REENTRANT -w"
 
 %install
 rm -rf $RPM_BUILD_ROOT
