@@ -1,0 +1,22 @@
+--- tix-8.1.4/unix/tk8.4/Makefile.in.wiget	2002-12-11 08:18:41.000000000 +0100
++++ tix-8.1.4/unix/tk8.4/Makefile.in	2003-06-16 14:35:52.018958883 +0200
+@@ -259,7 +259,8 @@
+ 
+ $(TIX_LIB_FILE): $(OBJS)
+ 	rm -f $(TIX_LIB_FILE)
+-	@TIX_MAKE_LIB@
++	@TIX_MAKE_LIB@ -Wl,-soname,`echo $(TIX_LIB_FILE)|sed -e 's/\.so.*/.so.0/'`
++	ln -s $(TIX_LIB_FILE) `echo $(TIX_LIB_FILE)|sed -e 's/\.so.*/.so/'`
+ 	$(TIX_RANLIB) $(TIX_LIB_FILE)
+ 
+ $(TCL_SAM_FILE): $(TCL_SAM_OBJS)
+@@ -274,7 +275,8 @@
+ 
+ $(TIX_SAM_FILE): $(TIX_SAM_OBJS)
+ 	rm -f $(TIX_SAM_FILE)
+-	@TIX_MAKE_SAM@
++	@TIX_MAKE_SAM@ -Wl,-soname,`echo $(TIX_SAM_FILE)|sed -e 's/\.so.*/.so.0/'`
++	ln -s $(TIX_SAM_FILE) `echo $(TIX_SAM_FILE)|sed -e 's/\.so.*/.so/'`
+ 	$(TIX_RANLIB) $(TIX_SAM_FILE)
+ 
+ $(TIX_EXE_FILE): tixAppInit.o $(TIX_LIB_FILE)
