@@ -1,9 +1,9 @@
 %define		major 8.1
 %define		tkmajor 8.4
-Summary:	Many metawidgets (such as notepads) for tk
-Summary(de):	Zahlreiche Metawidgets (wie etwa Notepads) für tk
-Summary(fr):	Nombreux meta-widgets (comme les bloc-notes) pour tk
-Summary(pl):	Wiele widgetów (takich jak notepad) dla tk
+Summary:	Many metawidgets (such as notepads) for Tk
+Summary(de):	Zahlreiche Metawidgets (wie etwa Notepads) für Tk
+Summary(fr):	Nombreux meta-widgets (comme les bloc-notes) pour Tk
+Summary(pl):	Wiele widgetów (takich jak notepad) dla Tk
 Summary(tr):	Tk için ek arayüz elemanlarý (not defterleri v.b.)
 Name:		tix
 Version:	%{major}.4
@@ -29,28 +29,28 @@ Requires:	tk >= 8.4.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Tix is a add on for the tk widget set which adds many complex widgets
-which are built from tk building blocks. The extra widgets include
+Tix is a add on for the Tk widget set which adds many complex widgets
+which are built from Tk building blocks. The extra widgets include
 combo box, file selection, notebooks, paned windows, spin controls,
 and hierarchical list boxes.
 
 %description -l de
-Tix ist ein Zusatzprogramm für den 'tk widget set', das viele komplexe
-Widgets hinzufügt, die aus tk-Bausteinen bestehen, z.B.
+Tix ist ein Zusatzprogramm für den 'Tk widget set', das viele komplexe
+Widgets hinzufügt, die aus Tk-Bausteinen bestehen, z.B.
 Kombinationsfelder, Dateiauswahl, Notizblöcke, überlappende Fenster,
 Drehknöpfe und hierarchische Listenfelder.
 
 %description -l fr
 tix est un ajout à l'ensemble des widgets Tk qui apporte de nombreux
-widgets complexes construits à partir des briques de tk. Les widgets
+widgets complexes construits à partir des briques de Tk. Les widgets
 supplémentaires incluent les combo box, la sélection de fichiers, les
 notebooks, les fenêtres « paned » et les listes hiérarchisées.
 
 %description -l pl
-Tix jest dodatkiem dla tk, zawieraj±cym wiele interesuj±cych widgetów.
+Tix jest dodatkiem dla Tk, zawieraj±cym wiele interesuj±cych widgetów.
 
 %description -l tr
-Tix, tk yapýtaþlarý kullanýlarak oluþturulmuþ bir çok karmaþýk arayüz
+Tix, Tk yapýtaþlarý kullanýlarak oluþturulmuþ bir çok karmaþýk arayüz
 elemaný bulunduran bir eklemedir. Bu yeni elemanlar arasýnda çoktan
 seçmeli kutular, dosya seçim kutularý, not defterleri, çok kýsýmlý
 pencereler yer almaktadýr.
