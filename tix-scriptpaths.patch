@@ -9,3 +9,14 @@
  
  set dont(plusarm.gif)  1
  set dont(minusarm.gif) 1
+--- tix-8.1.4/unix/tk8.4/Makefile.in.orig	2004-03-07 12:10:12.000000000 +0100
++++ tix-8.1.4/unix/tk8.4/Makefile.in	2004-03-07 12:15:31.959535280 +0100
+@@ -93,7 +93,7 @@
+ RUN_TCLSH	= TCL_LIBRARY=$(TCL_SRC_DIR)/library \
+ 		  TK_LIBRARY=$(TK_SRC_DIR)/library \
+ 		  LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:.:$(TCL_SRC_DIR)/unix \
+-	          $(TCL_BIN_DIR)/tclsh
++	          tclsh
+ 
+ 
+ #----------------------------------------------------------------
