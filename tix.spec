@@ -7,7 +7,7 @@ Summary(pl):	Wiele widgetów (takich jak notepad) dla tk
 Summary(tr):	Tk için ek arayüz elemanlarý (not defterleri v.b.)
 Name:		tix
 Version:	%{major}.4
-Release:	6
+Release:	7
 Epoch:		1
 License:	BSD
 Group:		Development/Languages/Tcl
