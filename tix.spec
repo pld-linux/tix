@@ -1,5 +1,5 @@
 Summary:	Many metawidgets (such as notepads) for tk
-Summary(de):	Zahlreiche Metawidgets (wie etwa Notepads) für tk 
+Summary(de):	Zahlreiche Metawidgets (wie etwa Notepads) für tk
 Summary(fr):	Nombreux meta-widgets (comme les bloc-notes) pour tk
 Summary(pl):	Wiele widgetów (takich jak notepad) dla tk
 Summary(tr):	Tk için ek arayüz elemanlarý (not defterleri v.b.)
@@ -21,19 +21,19 @@ BuildRequires:	tcl-devel >= 8.3.2
 BuildRequires:	tk-devel >= 8.3.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%description 
+%description
 Tix is a add on for the tk widget set which adds many complex widgets
 which are built from tk building blocks. The extra widgets include
 combo box, file selection, notebooks, paned windows, spin controls,
 and hierarchical list boxes.
 
-%description -l de 
+%description -l de
 Tix ist ein Zusatzprogramm für den 'tk widget set', das viele komplexe
 Widgets hinzufügt, die aus tk-Bausteinen bestehen, z.B.
 Kombinationsfelder, Dateiauswahl, Notizblöcke, überlappende Fenster,
 Drehknöpfe und hierarchische Listenfelder.
 
-%description -l fr 
+%description -l fr
 tix est un ajout à l'ensemble des widgets Tk qui apporte de nombreux
 widgets complexes construits à partir des briques de tk. Les widgets
 supplémentaires incluent les combo box, la sélection de fichiers, les
@@ -42,7 +42,7 @@ notebooks, les fenêtres « paned » et les listes hiérarchisées.
 %description -l pl
 Tix jest dodatkiem dla tk, zawieraj±cym wiele interesuj±cych widgetów.
 
-%description -l tr 
+%description -l tr
 Tix, tk yapýtaþlarý kullanýlarak oluþturulmuþ bir çok karmaþýk arayüz
 elemaný bulunduran bir eklemedir. Bu yeni elemanlar arasýnda çoktan
 seçmeli kutular, dosya seçim kutularý, not defterleri, çok kýsýmlý
@@ -57,7 +57,7 @@ Requires:	%{name} = %{version}
 %description devel
 Tix header files and development documentation
 
-%description -l pl devel
+%description devel -l pl
 Pliki nag³ówkowe oraz dokumentacja do Tix.
 
 %package demo
@@ -98,7 +98,7 @@ aclocal; autoconf
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_mandir},%{_prefix}/src/examples/%{name}}
 
-(cd unix 
+(cd unix
 LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir} \
 %{__make} install \
 	prefix=$RPM_BUILD_ROOT%{_prefix} \
@@ -124,13 +124,13 @@ mv -f $RPM_BUILD_ROOT%{_bindir}/tixwish8.1.8.3 \
 
 gzip -9nf docs/*.txt
 
-%post   -p /sbin/ldconfig 
+%post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files 
+%files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/*.so
