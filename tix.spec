@@ -14,6 +14,7 @@ Source0:	http://prdownloads.sourceforge.net/tix/%{name}-%{version}.tar.gz
 Patch0:		%{name}-scriptpaths.patch
 Patch1:		%{name}-fhs.patch
 Patch2:		%{name}-autoconf.patch
+Patch3:		%{name}-soname.patch
 URL:		http://tix.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
@@ -76,10 +77,10 @@ Tix - programy demostracjne.
 
 %prep
 %setup  -q
-
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 cd unix
@@ -124,8 +125,6 @@ mv -f $RPM_BUILD_ROOT%{_datadir}/tix8.1/demos \
 mv -f $RPM_BUILD_ROOT%{_bindir}/tixwish8.1.8.3 \
 	$RPM_BUILD_ROOT%{_bindir}/tixwish
 
-gzip -9nf docs/*.txt
-
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
@@ -147,7 +146,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc docs/*.gz docs/{pdf,tix-book}
+%doc docs/*.txt docs/{pdf,tix-book}
 %attr(755,root,root) %{_libdir}/tixConfig.sh
 %{_includedir}/*.h
 %{_mandir}/man[3n]/*
