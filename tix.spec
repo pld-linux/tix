@@ -4,8 +4,8 @@ Summary(fr):	Nombreux meta-widgets (comme les bloc-notes) pour tk
 Summary(pl):	Wiele widgetów (takich jak notepad) dla tk
 Summary(tr):	Tk için ek arayüz elemanlarý (not defterleri v.b.)
 Name:		tix
-Version:	8.1.3
-Release:	2
+Version:	8.1.4
+Release:	1
 Epoch:		1
 License:	BSD
 Group:		Development/Languages/Tcl
