@@ -7,7 +7,7 @@ Summary(pl):	Wiele widgetów (takich jak notepad) dla tk
 Summary(tr):	Tk için ek arayüz elemanlarý (not defterleri v.b.)
 Name:		tix
 Version:	%{major}.4
-Release:	7
+Release:	8
 Epoch:		1
 License:	BSD
 Group:		Development/Languages/Tcl
@@ -21,9 +21,11 @@ URL:		http://tix.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	tcl-devel >= 8.4.3
-BuildRequires:	tk-devel >= 8.4.3
+BuildRequires:	tcl-devel >= 8.4.6
+BuildRequires:	tk-devel >= 8.4.6
 BuildRequires:	which
+Requires:	tcl >= 8.4.6
+Requires:	tk >= 8.4.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -57,7 +59,7 @@ pencereler yer almaktadýr.
 Summary:	Tix header files and development documentation
 Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do Tix
 Group:		Development/Languages/Tcl
-Requires:	%{name} = %{epoch}:%{version}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description devel
 Tix header files and development documentation
@@ -69,7 +71,7 @@ Pliki nag³ówkowe oraz dokumentacja do Tix.
 Summary:	Tix - demo programs
 Summary(pl):	Tix - programy demostracjne
 Group:		Development/Languages/Tcl
-Requires:	%{name} = %{epoch}:%{version}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description demo
 Tix - demo programs.
@@ -78,11 +80,11 @@ Tix - demo programs.
 Tix - programy demostracjne.
 
 %prep
-%setup  -q
+%setup -q
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1 -b .wiget
+%patch3 -p1
 
 %build
 cd unix
@@ -97,6 +99,7 @@ cd tk%{tkmajor}
 %{__autoconf}
 %configure \
 	--disable-cdemos \
+	--enable-sam \
 	--enable-shared
 
 %{__make} \
@@ -104,7 +107,7 @@ cd tk%{tkmajor}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_mandir},%{_examplesdir}/%{name}}
+install -d $RPM_BUILD_ROOT{%{_mandir},%{_examplesdir}/%{name}-%{version}}
 
 cd unix
 LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir} \
@@ -117,15 +120,8 @@ LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir} \
 mv -f $RPM_BUILD_ROOT%{_mandir}/mann/tixwish.1 \
 	$RPM_BUILD_ROOT%{_mandir}/man1
 
-cd tk%{tkmajor}
-%{__make} install \
-	prefix=$RPM_BUILD_ROOT%{_prefix} \
-	LIB_DIR=$RPM_BUILD_ROOT%{_libdir} \
-	BIN_DIR=$RPM_BUILD_ROOT%{_bindir}
-cd ../..
-
 mv -f $RPM_BUILD_ROOT%{_datadir}/tix%{major}/demos \
-	$RPM_BUILD_ROOT%{_examplesdir}/%{name}
+	$RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 mv -f $RPM_BUILD_ROOT%{_bindir}/tixwish%{major}.%{tkmajor} \
 	$RPM_BUILD_ROOT%{_bindir}/tixwish
 
@@ -167,5 +163,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files demo
 %defattr(644,root,root,755)
-%dir %{_examplesdir}/%{name}
-%attr(-,root,root) %{_examplesdir}/%{name}/*
+%dir %{_examplesdir}/%{name}-%{version}
+%dir %{_examplesdir}/%{name}-%{version}/demos
+%{_examplesdir}/%{name}-%{version}/demos/Mk*.tcl
+%{_examplesdir}/%{name}-%{version}/demos/README
+%{_examplesdir}/%{name}-%{version}/demos/bitmaps
+%{_examplesdir}/%{name}-%{version}/demos/samples
+%{_examplesdir}/%{name}-%{version}/demos/tclIndex
+%attr(755,root,root) %{_examplesdir}/%{name}-%{version}/demos/tixwidgets.tcl
