@@ -57,7 +57,7 @@ pencereler yer almaktadýr.
 Summary:	Tix header files and development documentation
 Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do Tix
 Group:		Development/Languages/Tcl
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 
 %description devel
 Tix header files and development documentation
@@ -69,7 +69,7 @@ Pliki nag³ówkowe oraz dokumentacja do Tix.
 Summary:	Tix - demo programs
 Summary(pl):	Tix - programy demostracjne
 Group:		Development/Languages/Tcl
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 
 %description demo
 Tix - demo programs.
