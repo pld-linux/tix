@@ -10,6 +10,7 @@ Epoch:		1
 License:	BSD
 Group:		Development/Languages/Tcl
 Source0:	http://dl.sourceforge.net/tix/%{name}-%{version}.tar.gz
+# Source0-md5: 128a74718d6d9e10fac40cdf11c661a3
 Patch0:		%{name}-scriptpaths.patch
 Patch1:		%{name}-fhs.patch
 Patch2:		%{name}-autoconf.patch
