@@ -9,12 +9,6 @@ Release:	1
 Epoch:		1
 License:	BSD
 Group:		Development/Languages/Tcl
-Group(de):	Entwicklung/Sprachen/Tcl
-Group(es):	Desarrollo/Lenguages/Tcl
-Group(fr):	Development/Langues/Tcl
-Group(pl):	Programowanie/Jêzyki/Tcl
-Group(pt):	Desenvolvimento/Línguas/Tcl
-Group(ru):	òÁÚÒÁÂÏÔËÁ/ñÚÙËÉ/Tcl
 Source0:	http://prdownloads.sourceforge.net/tix/%{name}-%{version}.tar.gz
 Patch0:		%{name}-scriptpaths.patch
 Patch1:		%{name}-fhs.patch
@@ -58,12 +52,6 @@ pencereler yer almaktadır.
 Summary:	Tix header files and development documentation
 Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do Tix
 Group:		Development/Languages/Tcl
-Group(de):	Entwicklung/Sprachen/Tcl
-Group(es):	Desarrollo/Lenguages/Tcl
-Group(fr):	Development/Langues/Tcl
-Group(pl):	Programowanie/Jêzyki/Tcl
-Group(pt):	Desenvolvimento/Línguas/Tcl
-Group(ru):	òÁÚÒÁÂÏÔËÁ/ñÚÙËÉ/Tcl
 Requires:	%{name} = %{version}
 
 %description devel
@@ -76,12 +64,6 @@ Pliki nag³ówkowe oraz dokumentacja do Tix.
 Summary:	Tix - demo programs
 Summary(pl):	Tix - programy demostracjne
 Group:		Development/Languages/Tcl
-Group(de):	Entwicklung/Sprachen/Tcl
-Group(es):	Desarrollo/Lenguages/Tcl
-Group(fr):	Development/Langues/Tcl
-Group(pl):	Programowanie/Jêzyki/Tcl
-Group(pt):	Desenvolvimento/Línguas/Tcl
-Group(ru):	òÁÚÒÁÂÏÔËÁ/ñÚÙËÉ/Tcl
 Requires:	%{name} = %{version}
 
 %description demo
