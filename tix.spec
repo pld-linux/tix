@@ -86,20 +86,21 @@ Tix - programy demostracjne.
 
 %build
 cd unix
-%{__aclocal}
+%{__aclocal} -I ../config
 %{__autoconf}
 %configure \
 	--disable-cdemos \
 	--enable-shared
 
 cd tk%{tkmajor}
-%{__aclocal}
+%{__aclocal} -I ../../config
 %{__autoconf}
 %configure \
 	--disable-cdemos \
 	--enable-shared
 
-%{__make} CFLAGS="%{rpmcflags} -D_REENTRANT -w"
+%{__make} \
+	CFLAGS="%{rpmcflags} -D_REENTRANT -w"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -117,7 +118,8 @@ mv -f $RPM_BUILD_ROOT%{_mandir}/mann/tixwish.1 \
 	$RPM_BUILD_ROOT%{_mandir}/man1
 
 cd tk%{tkmajor}
-%{__make} install prefix=$RPM_BUILD_ROOT%{_prefix} \
+%{__make} install \
+	prefix=$RPM_BUILD_ROOT%{_prefix} \
 	LIB_DIR=$RPM_BUILD_ROOT%{_libdir} \
 	BIN_DIR=$RPM_BUILD_ROOT%{_bindir}
 cd ../..
