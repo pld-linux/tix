@@ -9,7 +9,7 @@ Release:	1
 Epoch:		1
 License:	BSD
 Group:		Development/Languages/Tcl
-Source0:	http://prdownloads.sourceforge.net/tix/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/tix/%{name}-%{version}.tar.gz
 Patch0:		%{name}-scriptpaths.patch
 Patch1:		%{name}-fhs.patch
 Patch2:		%{name}-autoconf.patch
@@ -75,20 +75,21 @@ Tix - programy demostracjne.
 
 %prep
 %setup  -q
-
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 
 %build
 cd unix
-%{__aclocal}; autoconf
+%{__aclocal}
+%{__autoconf}
 %configure \
 	--disable-cdemos \
 	--enable-shared
 
 cd tk8.3
-%{__aclocal}; autoconf
+%{__aclocal}
+%{__autoconf}
 %configure \
 	--disable-cdemos \
 	--enable-shared
@@ -99,7 +100,7 @@ cd tk8.3
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_mandir},%{_prefix}/src/examples/%{name}}
 
-(cd unix
+cd unix
 LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir} \
 %{__make} install \
 	prefix=$RPM_BUILD_ROOT%{_prefix} \
@@ -110,10 +111,11 @@ LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir} \
 mv -f $RPM_BUILD_ROOT%{_mandir}/mann/tixwish.1 \
 	$RPM_BUILD_ROOT%{_mandir}/man1
 
-(cd tk8.3
+cd tk8.3
 %{__make} install prefix=$RPM_BUILD_ROOT%{_prefix} \
 	LIB_DIR=$RPM_BUILD_ROOT%{_libdir} \
-	BIN_DIR=$RPM_BUILD_ROOT%{_bindir} ) )
+	BIN_DIR=$RPM_BUILD_ROOT%{_bindir}
+cd ../..
 
 #mv -f	$RPM_BUILD_ROOT%{_bindir}/tixwish4.1.8.0 \
 #	$RPM_BUILD_ROOT%{_bindir}/tixwish
@@ -123,11 +125,11 @@ mv -f $RPM_BUILD_ROOT%{_datadir}/tix8.1/demos \
 mv -f $RPM_BUILD_ROOT%{_bindir}/tixwish8.1.8.3 \
 	$RPM_BUILD_ROOT%{_bindir}/tixwish
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
