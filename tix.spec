@@ -5,7 +5,7 @@ Summary(pl):	Wiele widgetów (takich jak notepad) dla tk
 Summary(tr):	Tk için ek arayüz elemanlarý (not defterleri v.b.)
 Name:		tix
 Version:	8.1.4
-Release:	1
+Release:	2
 Epoch:		1
 License:	BSD
 Group:		Development/Languages/Tcl
@@ -18,8 +18,8 @@ URL:		http://tix.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	tcl-devel >= 8.3.2
-BuildRequires:	tk-devel >= 8.3.2
+BuildRequires:	tcl-devel >= 8.3.2-10
+BuildRequires:	tk-devel >= 8.3.2-8
 BuildRequires:	which
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -126,6 +126,15 @@ mv -f $RPM_BUILD_ROOT%{_datadir}/tix8.1/demos \
 mv -f $RPM_BUILD_ROOT%{_bindir}/tixwish8.1.8.3 \
 	$RPM_BUILD_ROOT%{_bindir}/tixwish
 
+ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtix%{version}*.so.*.*` \
+	$RPM_BUILD_ROOT%{_libdir}/libtix.so
+ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtixsam*.so.*.*` \
+	$RPM_BUILD_ROOT%{_libdir}/libtixsam.so
+ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtix%{version}*.so.*.*` \
+	$RPM_BUILD_ROOT%{_libdir}/libtix%{version}.so
+ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtixsam*.so.*.*` \
+	$RPM_BUILD_ROOT%{_libdir}/libtixsam%{version}.so
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -135,7 +144,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/*.so
+%attr(755,root,root) %{_libdir}/*.so.*.*
 
 %dir %{_datadir}/tix8.1
 %{_datadir}/tix8.1/*.tcl
@@ -149,6 +158,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc docs/*.txt docs/{pdf,tix-book}
 %attr(755,root,root) %{_libdir}/tixConfig.sh
+%attr(755,root,root) %{_libdir}/*.so
 %{_includedir}/*.h
 %{_mandir}/man[3n]/*
 
