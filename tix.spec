@@ -1,5 +1,6 @@
 %define		major 8.1
-%define		tkmajor 8.4
+%define		tkmajor 8.5
+# ./configure gets 8.4 (8.5 officialy not supported)
 Summary:	Many metawidgets (such as notepads) for Tk
 Summary(de):	Zahlreiche Metawidgets (wie etwa Notepads) für Tk
 Summary(fr):	Nombreux meta-widgets (comme les bloc-notes) pour Tk
@@ -7,7 +8,7 @@ Summary(pl):	Wiele widgetów (takich jak notepad) dla Tk
 Summary(tr):	Tk için ek arayüz elemanlarý (not defterleri v.b.)
 Name:		tix
 Version:	%{major}.4
-Release:	8
+Release:	9
 Epoch:		1
 License:	BSD
 Group:		Development/Languages/Tcl
@@ -17,6 +18,7 @@ Patch0:		%{name}-scriptpaths.patch
 Patch1:		%{name}-fhs.patch
 Patch2:		%{name}-autoconf.patch
 Patch3:		%{name}-soname.patch
+Patch4:		%{name}-tcl85_hack.patch
 URL:		http://tix.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
@@ -85,6 +87,7 @@ Tix - programy demostracjne.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 cd unix
@@ -94,7 +97,7 @@ cd unix
 	--disable-cdemos \
 	--enable-shared
 
-cd tk%{tkmajor}
+cd tk8.4
 %{__aclocal} -I ../../config
 %{__autoconf}
 %configure \
