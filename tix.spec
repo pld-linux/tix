@@ -1,24 +1,19 @@
-%define		major 8.1
-%define		tkmajor 8.5
-# ./configure gets 8.4 (8.5 officialy not supported)
+%define		major 8.4
 Summary:	Many metawidgets (such as notepads) for Tk
 Summary(de):	Zahlreiche Metawidgets (wie etwa Notepads) für Tk
 Summary(fr):	Nombreux meta-widgets (comme les bloc-notes) pour Tk
 Summary(pl):	Wiele widgetów (takich jak notepad) dla Tk
 Summary(tr):	Tk için ek arayüz elemanlarý (not defterleri v.b.)
 Name:		tix
-Version:	%{major}.4
-Release:	9
+Version:	%{major}.0
+Release:	1
 Epoch:		1
 License:	BSD
 Group:		Development/Languages/Tcl
 Source0:	http://dl.sourceforge.net/tix/%{name}-%{version}.tar.gz
-# Source0-md5:	128a74718d6d9e10fac40cdf11c661a3
+# Source0-md5:	7fcd84a1a6e27e432cb07284b7a34317
 Patch0:		%{name}-scriptpaths.patch
-Patch1:		%{name}-fhs.patch
-Patch2:		%{name}-autoconf.patch
-Patch3:		%{name}-soname.patch
-Patch4:		%{name}-tcl85_hack.patch
+Patch1:		%{name}-tcl85_hack.patch
 URL:		http://tix.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
@@ -58,16 +53,16 @@ seçmeli kutular, dosya seçim kutularý, not defterleri, çok kýsýmlý
 pencereler yer almaktadýr.
 
 %package devel
-Summary:	Tix header files and development documentation
-Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do Tix
+Summary:	Tix development documentation
+Summary(pl):	Dokumentacja programisty do rozszerzenia Tix
 Group:		Development/Languages/Tcl
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description devel
-Tix header files and development documentation
+Tix development documentation.
 
 %description devel -l pl
-Pliki nag³ówkowe oraz dokumentacja do Tix.
+Dokumentacja programisty do rozszerzenia Tix.
 
 %package demo
 Summary:	Tix - demo programs
@@ -85,92 +80,53 @@ Tix - programy demostracjne.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
-cd unix
-%{__aclocal} -I ../config
+%{__aclocal} -I tclconfig
 %{__autoconf}
 %configure \
-	--disable-cdemos \
 	--enable-shared
 
-cd tk8.4
-%{__aclocal} -I ../../config
-%{__autoconf}
-%configure \
-	--disable-cdemos \
-	--enable-sam \
-	--enable-shared
-
-%{__make} \
-	CFLAGS="%{rpmcflags} -D_REENTRANT -w"
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_mandir},%{_examplesdir}/%{name}-%{version}}
 
-cd unix
-LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir} \
 %{__make} install \
-	prefix=$RPM_BUILD_ROOT%{_prefix} \
-	LIB_DIR=$RPM_BUILD_ROOT%{_libdir} \
-	BIN_DIR=$RPM_BUILD_ROOT%{_bindir} \
-	TIX_LIBRARY=$RPM_BUILD_ROOT%{_datadir}/tix%{major}
+	DESTDIR=$RPM_BUILD_ROOT
 
-mv -f $RPM_BUILD_ROOT%{_mandir}/mann/tixwish.1 \
-	$RPM_BUILD_ROOT%{_mandir}/man1
+install -d $RPM_BUILD_ROOT%{_mandir}/mann
+install man/*.n $RPM_BUILD_ROOT%{_mandir}/mann
 
-mv -f $RPM_BUILD_ROOT%{_datadir}/tix%{major}/demos \
-	$RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-mv -f $RPM_BUILD_ROOT%{_bindir}/tixwish%{major}.%{tkmajor} \
-	$RPM_BUILD_ROOT%{_bindir}/tixwish
+cp -af demos $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
-ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtix%{major}*.so.*.*` \
-	$RPM_BUILD_ROOT%{_libdir}/libtix.so
-ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtixsam%{major}*.so.*.*` \
-	$RPM_BUILD_ROOT%{_libdir}/libtixsam.so
-ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtix%{major}*.so.*.*` \
-	$RPM_BUILD_ROOT%{_libdir}/libtix%{major}.so
-ln -sf `cd $RPM_BUILD_ROOT%{_libdir}; echo libtixsam%{major}*.so.*.*` \
-	$RPM_BUILD_ROOT%{_libdir}/libtixsam%{major}.so
+rm -f $RPM_BUILD_ROOT%{_libdir}/Tix%{major}/bitmaps/mktransgif.tcl*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/*.so.*.*
-
-%dir %{_datadir}/tix%{major}
-%{_datadir}/tix%{major}/*.tcl
-%{_datadir}/tix%{major}/tclIndex
-
-%{_datadir}/tix%{major}/bitmaps
-%{_datadir}/tix%{major}/pref
-%{_mandir}/man1/*
+%doc ABOUT.html ChangeLog README.txt index.html license.terms docs/FAQ.html
+%dir %{_libdir}/Tix%{major}
+%attr(755,root,root) %{_libdir}/Tix%{major}/libTix%{major}.so
+%{_libdir}/Tix%{major}/*.tcl
+%{_libdir}/Tix%{major}/bitmaps
+%{_libdir}/Tix%{major}/pref
 
 %files devel
 %defattr(644,root,root,755)
 %doc docs/*.txt docs/{pdf,tix-book}
-%attr(755,root,root) %{_libdir}/tixConfig.sh
-%attr(755,root,root) %{_libdir}/*.so
-%{_includedir}/*.h
-%{_mandir}/man[3n]/*
+%{_mandir}/mann/*
 
 %files demo
 %defattr(644,root,root,755)
 %dir %{_examplesdir}/%{name}-%{version}
 %dir %{_examplesdir}/%{name}-%{version}/demos
 %{_examplesdir}/%{name}-%{version}/demos/Mk*.tcl
-%{_examplesdir}/%{name}-%{version}/demos/README
 %{_examplesdir}/%{name}-%{version}/demos/bitmaps
 %{_examplesdir}/%{name}-%{version}/demos/samples
 %{_examplesdir}/%{name}-%{version}/demos/tclIndex
+%{_examplesdir}/%{name}-%{version}/demos/widget
 %attr(755,root,root) %{_examplesdir}/%{name}-%{version}/demos/tixwidgets.tcl
