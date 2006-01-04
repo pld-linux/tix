@@ -14,6 +14,7 @@ Source0:	http://dl.sourceforge.net/tix/%{name}-%{version}.tar.gz
 # Source0-md5:	7fcd84a1a6e27e432cb07284b7a34317
 Patch0:		%{name}-scriptpaths.patch
 Patch1:		%{name}-tcl85_hack.patch
+Patch2:		tcl-shell-quotes.patch
 URL:		http://tix.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
@@ -80,6 +81,9 @@ Tix - programy demostracjne.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+cd tclconfig
+%patch2 -p2
+cd ..
 
 %build
 %{__aclocal} -I tclconfig
