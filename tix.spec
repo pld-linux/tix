@@ -1,9 +1,9 @@
 %define		major 8.4
 Summary:	Many metawidgets (such as notepads) for Tk
-Summary(de):	Zahlreiche Metawidgets (wie etwa Notepads) für Tk
-Summary(fr):	Nombreux meta-widgets (comme les bloc-notes) pour Tk
-Summary(pl):	Wiele widgetów (takich jak notepad) dla Tk
-Summary(tr):	Tk için ek arayüz elemanlarý (not defterleri v.b.)
+Summary(de.UTF-8):   Zahlreiche Metawidgets (wie etwa Notepads) fÃ¼r Tk
+Summary(fr.UTF-8):   Nombreux meta-widgets (comme les bloc-notes) pour Tk
+Summary(pl.UTF-8):   Wiele widgetÃ³w (takich jak notepad) dla Tk
+Summary(tr.UTF-8):   Tk iÃ§in ek arayÃ¼z elemanlarÄ± (not defterleri v.b.)
 Name:		tix
 Version:	%{major}.0
 Release:	1
@@ -32,49 +32,49 @@ which are built from Tk building blocks. The extra widgets include
 combo box, file selection, notebooks, paned windows, spin controls,
 and hierarchical list boxes.
 
-%description -l de
-Tix ist ein Zusatzprogramm für den 'Tk widget set', das viele komplexe
-Widgets hinzufügt, die aus Tk-Bausteinen bestehen, z.B.
-Kombinationsfelder, Dateiauswahl, Notizblöcke, überlappende Fenster,
-Drehknöpfe und hierarchische Listenfelder.
+%description -l de.UTF-8
+Tix ist ein Zusatzprogramm fÃ¼r den 'Tk widget set', das viele komplexe
+Widgets hinzufÃ¼gt, die aus Tk-Bausteinen bestehen, z.B.
+Kombinationsfelder, Dateiauswahl, NotizblÃ¶cke, Ã¼berlappende Fenster,
+DrehknÃ¶pfe und hierarchische Listenfelder.
 
-%description -l fr
-tix est un ajout à l'ensemble des widgets Tk qui apporte de nombreux
-widgets complexes construits à partir des briques de Tk. Les widgets
-supplémentaires incluent les combo box, la sélection de fichiers, les
-notebooks, les fenêtres « paned » et les listes hiérarchisées.
+%description -l fr.UTF-8
+tix est un ajout Ã  l'ensemble des widgets Tk qui apporte de nombreux
+widgets complexes construits Ã  partir des briques de Tk. Les widgets
+supplÃ©mentaires incluent les combo box, la sÃ©lection de fichiers, les
+notebooks, les fenÃªtres Â« paned Â» et les listes hiÃ©rarchisÃ©es.
 
-%description -l pl
-Tix jest dodatkiem dla Tk, zawieraj±cym wiele interesuj±cych widgetów.
+%description -l pl.UTF-8
+Tix jest dodatkiem dla Tk, zawierajÄ…cym wiele interesujÄ…cych widgetÃ³w.
 
-%description -l tr
-Tix, Tk yapýtaþlarý kullanýlarak oluþturulmuþ bir çok karmaþýk arayüz
-elemaný bulunduran bir eklemedir. Bu yeni elemanlar arasýnda çoktan
-seçmeli kutular, dosya seçim kutularý, not defterleri, çok kýsýmlý
-pencereler yer almaktadýr.
+%description -l tr.UTF-8
+Tix, Tk yapÄ±taÅŸlarÄ± kullanÄ±larak oluÅŸturulmuÅŸ bir Ã§ok karmaÅŸÄ±k arayÃ¼z
+elemanÄ± bulunduran bir eklemedir. Bu yeni elemanlar arasÄ±nda Ã§oktan
+seÃ§meli kutular, dosya seÃ§im kutularÄ±, not defterleri, Ã§ok kÄ±sÄ±mlÄ±
+pencereler yer almaktadÄ±r.
 
 %package devel
 Summary:	Tix development documentation
-Summary(pl):	Dokumentacja programisty do rozszerzenia Tix
+Summary(pl.UTF-8):   Dokumentacja programisty do rozszerzenia Tix
 Group:		Development/Languages/Tcl
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description devel
 Tix development documentation.
 
-%description devel -l pl
+%description devel -l pl.UTF-8
 Dokumentacja programisty do rozszerzenia Tix.
 
 %package demo
 Summary:	Tix - demo programs
-Summary(pl):	Tix - programy demostracjne
+Summary(pl.UTF-8):   Tix - programy demostracjne
 Group:		Development/Languages/Tcl
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description demo
 Tix - demo programs.
 
-%description demo -l pl
+%description demo -l pl.UTF-8
 Tix - programy demostracjne.
 
 %prep
