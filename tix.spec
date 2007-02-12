@@ -1,9 +1,9 @@
 %define		major 8.4
 Summary:	Many metawidgets (such as notepads) for Tk
-Summary(de.UTF-8):   Zahlreiche Metawidgets (wie etwa Notepads) für Tk
-Summary(fr.UTF-8):   Nombreux meta-widgets (comme les bloc-notes) pour Tk
-Summary(pl.UTF-8):   Wiele widgetów (takich jak notepad) dla Tk
-Summary(tr.UTF-8):   Tk için ek arayüz elemanları (not defterleri v.b.)
+Summary(de.UTF-8):	Zahlreiche Metawidgets (wie etwa Notepads) für Tk
+Summary(fr.UTF-8):	Nombreux meta-widgets (comme les bloc-notes) pour Tk
+Summary(pl.UTF-8):	Wiele widgetów (takich jak notepad) dla Tk
+Summary(tr.UTF-8):	Tk için ek arayüz elemanları (not defterleri v.b.)
 Name:		tix
 Version:	%{major}.0
 Release:	1
@@ -55,7 +55,7 @@ pencereler yer almaktadır.
 
 %package devel
 Summary:	Tix development documentation
-Summary(pl.UTF-8):   Dokumentacja programisty do rozszerzenia Tix
+Summary(pl.UTF-8):	Dokumentacja programisty do rozszerzenia Tix
 Group:		Development/Languages/Tcl
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -67,7 +67,7 @@ Dokumentacja programisty do rozszerzenia Tix.
 
 %package demo
 Summary:	Tix - demo programs
-Summary(pl.UTF-8):   Tix - programy demostracjne
+Summary(pl.UTF-8):	Tix - programy demostracjne
 Group:		Development/Languages/Tcl
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
