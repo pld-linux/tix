@@ -15,7 +15,7 @@ Source0:	http://dl.sourceforge.net/tix/%{name}-%{version}.tar.gz
 Patch0:		%{name}-scriptpaths.patch
 Patch1:		%{name}-tcl85_hack.patch
 URL:		http://tix.sourceforge.net/
-BuildRequires:	XFree86-devel
+BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	tcl-devel >= 8.4.6
