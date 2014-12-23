@@ -17,6 +17,7 @@ Patch2:		fixInterpResult.patch
 URL:		http://tix.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	groff
 BuildRequires:	tcl-devel >= 8.4.6
 BuildRequires:	tk-devel >= 8.4.6
 BuildRequires:	which
@@ -24,6 +25,8 @@ BuildRequires:	xorg-lib-libX11-devel
 Requires:	tcl >= 8.4.6
 Requires:	tk >= 8.4.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		groff_version	%(rpm -q --qf %{V} groff)
 
 %description
 Tix is a add on for the Tk widget set which adds many complex widgets
@@ -99,9 +102,9 @@ install -d $RPM_BUILD_ROOT{%{_mandir},%{_examplesdir}/%{name}-%{version}}
 install -d $RPM_BUILD_ROOT%{_mandir}/mann
 install man/*.n $RPM_BUILD_ROOT%{_mandir}/mann
 
-install -d $RPM_BUILD_ROOT%{_datadir}/groff/current/tmac
+install -d $RPM_BUILD_ROOT%{_datadir}/groff/%{groff_version}/tmac
 sed -i -e 's/.so man.macros/.mso tix.tmac/g' $RPM_BUILD_ROOT%{_mandir}/mann/*.n
-install man/man.macros $RPM_BUILD_ROOT%{_datadir}/groff/current/tmac/tix.tmac
+install man/man.macros $RPM_BUILD_ROOT%{_datadir}/groff/%{groff_version}/tmac/tix.tmac
 
 cp -af demos $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
@@ -123,7 +126,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc docs/*.txt docs/{pdf,tix-book}
 %{_mandir}/mann/*
-%{_datadir}/groff/current/tmac/tix.tmac
+%{_datadir}/groff/%{groff_version}/tmac/tix.tmac
 
 %files demo
 %defattr(644,root,root,755)
