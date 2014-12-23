@@ -1,0 +1,60 @@
+Index: tix-8.4.3/PyTix-2.0/2.0/_tkinter.c
+===================================================================
+--- tix-8.4.3.orig/PyTix-2.0/2.0/_tkinter.c
++++ tix-8.4.3/PyTix-2.0/2.0/_tkinter.c
+@@ -41,6 +41,7 @@ Copyright (C) 1994 Steen Lumholt.
+ #define MAC_TCL
+ #endif
+ 
++#define USE_INTERP_RESULT 1
+ #include <tcl.h>
+ #include <tk.h>
+ #ifdef WITH_TIX
+Index: tix-8.4.3/PyTix-2.0/2.0/tkappinit.c
+===================================================================
+--- tix-8.4.3.orig/PyTix-2.0/2.0/tkappinit.c
++++ tix-8.4.3/PyTix-2.0/2.0/tkappinit.c
+@@ -12,6 +12,7 @@
+    it explicitly, e.g. tkapp.eval("load {} Blt").
+  */
+ 
++#define USE_INTERP_RESULT 1
+ #include <tcl.h>
+ #include <tk.h>
+ 
+Index: tix-8.4.3/generic/tix.h
+===================================================================
+--- tix-8.4.3.orig/generic/tix.h
++++ tix-8.4.3/generic/tix.h
+@@ -27,6 +27,7 @@ extern "C" {
+ #endif
+ 
+ #ifndef _TK
++#define USE_INTERP_RESULT 1
+ #include <tk.h>
+ #endif
+ 
+Index: tix-8.4.3/generic/tixPort.h
+===================================================================
+--- tix-8.4.3.orig/generic/tixPort.h
++++ tix-8.4.3/generic/tixPort.h
+@@ -19,6 +19,7 @@
+ #define _TIX_PORT_H_
+ 
+ #ifndef _TCL
++#define USE_INTERP_RESULT 1
+ #include "tcl.h"
+ #endif
+ 
+Index: tix-8.4.3/generic/tixUtils.c
+===================================================================
+--- tix-8.4.3.orig/generic/tixUtils.c
++++ tix-8.4.3/generic/tixUtils.c
+@@ -13,6 +13,7 @@
+  * $Id: tixUtils.c,v 1.13 2008/02/28 04:29:17 hobbs Exp $
+  */
+ 
++#define USE_INTERP_RESULT 1
+ #include <tcl.h>
+ #include <tixPort.h>
+ #include <tixInt.h>

@@ -5,15 +5,15 @@ Summary(fr.UTF-8):	Nombreux meta-widgets (comme les bloc-notes) pour Tk
 Summary(pl.UTF-8):	Wiele widgetów (takich jak notepad) dla Tk
 Summary(tr.UTF-8):	Tk için ek arayüz elemanları (not defterleri v.b.)
 Name:		tix
-Version:	%{major}.0
-Release:	2
+Version:	%{major}.3
+Release:	1
 Epoch:		1
 License:	BSD
 Group:		Development/Languages/Tcl
-Source0:	http://dl.sourceforge.net/tix/%{name}-%{version}.tar.gz
-# Source0-md5:	7fcd84a1a6e27e432cb07284b7a34317
+Source0:	http://download.sourceforge.net/tix/Tix%{version}-src.tar.gz
+# Source0-md5:	2b8bf4b10a852264678182652f477e59
 Patch0:		%{name}-scriptpaths.patch
-Patch1:		%{name}-tcl85_hack.patch
+Patch2:		fixInterpResult.patch
 URL:		http://tix.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -77,9 +77,9 @@ Tix - demo programs.
 Tix - programy demostracjne.
 
 %prep
-%setup -q
+%setup -q -n Tix%{version}
 %patch0 -p1
-%patch1 -p1
+%patch2 -p1
 
 %build
 %{__aclocal} -I tclconfig
@@ -99,6 +99,10 @@ install -d $RPM_BUILD_ROOT{%{_mandir},%{_examplesdir}/%{name}-%{version}}
 install -d $RPM_BUILD_ROOT%{_mandir}/mann
 install man/*.n $RPM_BUILD_ROOT%{_mandir}/mann
 
+install -d $RPM_BUILD_ROOT%{_datadir}/groff/current/tmac
+sed -i -e 's/.so man.macros/.mso tix.tmac/g' $RPM_BUILD_ROOT%{_mandir}/mann/*.n
+install man/man.macros $RPM_BUILD_ROOT%{_datadir}/groff/current/tmac/tix.tmac
+
 cp -af demos $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/Tix%{major}/bitmaps/mktransgif.tcl*
@@ -109,16 +113,17 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ABOUT.html ChangeLog README.txt index.html license.terms docs/FAQ.html
-%dir %{_libdir}/Tix%{major}
-%attr(755,root,root) %{_libdir}/Tix%{major}/libTix%{major}.so
-%{_libdir}/Tix%{major}/*.tcl
-%{_libdir}/Tix%{major}/bitmaps
-%{_libdir}/Tix%{major}/pref
+%dir %{_libdir}/Tix%{version}
+%attr(755,root,root) %{_libdir}/Tix%{version}/libTix%{version}.so
+%{_libdir}/Tix%{version}/*.tcl
+%{_libdir}/Tix%{version}/bitmaps
+%{_libdir}/Tix%{version}/pref
 
 %files devel
 %defattr(644,root,root,755)
 %doc docs/*.txt docs/{pdf,tix-book}
 %{_mandir}/mann/*
+%{_datadir}/groff/current/tmac/tix.tmac
 
 %files demo
 %defattr(644,root,root,755)
