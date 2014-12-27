@@ -125,7 +125,10 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc docs/*.txt docs/{pdf,tix-book}
-%{_mandir}/mann/*
+%{_mandir}/mann/TixIntro.n*
+%{_mandir}/mann/compound.n*
+%{_mandir}/mann/pixmap.n*
+%{_mandir}/mann/tix*.n*
 %{_datadir}/groff/%{groff_version}/tmac/tix.tmac
 
 %files demo
