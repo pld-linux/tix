@@ -1,8 +1,9 @@
---- tix-8.1.3/library/bitmaps/mktransgif.tcl.orig	Wed May 17 13:08:46 2000
-+++ tix-8.1.3/library/bitmaps/mktransgif.tcl	Wed Feb  6 11:17:20 2002
+diff -urNp -x '*.orig' Tix8.4.3.org/library/bitmaps/mktransgif.tcl Tix8.4.3/library/bitmaps/mktransgif.tcl
+--- Tix8.4.3.org/library/bitmaps/mktransgif.tcl	2000-05-17 13:08:46.000000000 +0200
++++ Tix8.4.3/library/bitmaps/mktransgif.tcl	2023-07-23 13:34:43.500717719 +0200
 @@ -1,7 +1,7 @@
  #
- #	$Id$
+ #	$Id: mktransgif.tcl,v 1.1.1.1 2000/05/17 11:08:46 idiscovery Exp $
  #
 -#!/usr/local/bin/tclsh
 +#!/usr/bin/tclsh

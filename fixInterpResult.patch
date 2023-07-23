@@ -1,7 +1,8 @@
 Index: tix-8.4.3/PyTix-2.0/2.0/_tkinter.c
 ===================================================================
---- tix-8.4.3.orig/PyTix-2.0/2.0/_tkinter.c
-+++ tix-8.4.3/PyTix-2.0/2.0/_tkinter.c
+diff -urNp -x '*.orig' Tix8.4.3.org/PyTix-2.0/2.0/_tkinter.c Tix8.4.3/PyTix-2.0/2.0/_tkinter.c
+--- Tix8.4.3.org/PyTix-2.0/2.0/_tkinter.c	2000-11-22 08:59:38.000000000 +0100
++++ Tix8.4.3/PyTix-2.0/2.0/_tkinter.c	2023-07-23 13:34:43.723720858 +0200
 @@ -41,6 +41,7 @@ Copyright (C) 1994 Steen Lumholt.
  #define MAC_TCL
  #endif
@@ -10,10 +11,9 @@ Index: tix-8.4.3/PyTix-2.0/2.0/_tkinter.c
  #include <tcl.h>
  #include <tk.h>
  #ifdef WITH_TIX
-Index: tix-8.4.3/PyTix-2.0/2.0/tkappinit.c
-===================================================================
---- tix-8.4.3.orig/PyTix-2.0/2.0/tkappinit.c
-+++ tix-8.4.3/PyTix-2.0/2.0/tkappinit.c
+diff -urNp -x '*.orig' Tix8.4.3.org/PyTix-2.0/2.0/tkappinit.c Tix8.4.3/PyTix-2.0/2.0/tkappinit.c
+--- Tix8.4.3.org/PyTix-2.0/2.0/tkappinit.c	2000-11-22 08:59:51.000000000 +0100
++++ Tix8.4.3/PyTix-2.0/2.0/tkappinit.c	2023-07-23 13:34:43.723720858 +0200
 @@ -12,6 +12,7 @@
     it explicitly, e.g. tkapp.eval("load {} Blt").
   */
@@ -22,10 +22,9 @@ Index: tix-8.4.3/PyTix-2.0/2.0/tkappinit.c
  #include <tcl.h>
  #include <tk.h>
  
-Index: tix-8.4.3/generic/tix.h
-===================================================================
---- tix-8.4.3.orig/generic/tix.h
-+++ tix-8.4.3/generic/tix.h
+diff -urNp -x '*.orig' Tix8.4.3.org/generic/tix.h Tix8.4.3/generic/tix.h
+--- Tix8.4.3.org/generic/tix.h	2008-02-28 05:35:16.000000000 +0100
++++ Tix8.4.3/generic/tix.h	2023-07-23 13:34:43.723720858 +0200
 @@ -27,6 +27,7 @@ extern "C" {
  #endif
  
@@ -34,10 +33,9 @@ Index: tix-8.4.3/generic/tix.h
  #include <tk.h>
  #endif
  
-Index: tix-8.4.3/generic/tixPort.h
-===================================================================
---- tix-8.4.3.orig/generic/tixPort.h
-+++ tix-8.4.3/generic/tixPort.h
+diff -urNp -x '*.orig' Tix8.4.3.org/generic/tixPort.h Tix8.4.3/generic/tixPort.h
+--- Tix8.4.3.org/generic/tixPort.h	2005-03-25 21:15:53.000000000 +0100
++++ Tix8.4.3/generic/tixPort.h	2023-07-23 13:34:43.723720858 +0200
 @@ -19,6 +19,7 @@
  #define _TIX_PORT_H_
  
@@ -46,10 +44,9 @@ Index: tix-8.4.3/generic/tixPort.h
  #include "tcl.h"
  #endif
  
-Index: tix-8.4.3/generic/tixUtils.c
-===================================================================
---- tix-8.4.3.orig/generic/tixUtils.c
-+++ tix-8.4.3/generic/tixUtils.c
+diff -urNp -x '*.orig' Tix8.4.3.org/generic/tixUtils.c Tix8.4.3/generic/tixUtils.c
+--- Tix8.4.3.org/generic/tixUtils.c	2008-02-28 05:29:17.000000000 +0100
++++ Tix8.4.3/generic/tixUtils.c	2023-07-23 13:34:43.723720858 +0200
 @@ -13,6 +13,7 @@
   * $Id: tixUtils.c,v 1.13 2008/02/28 04:29:17 hobbs Exp $
   */
