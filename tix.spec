@@ -81,8 +81,8 @@ Tix - programy demostracjne.
 
 %prep
 %setup -q -n Tix%{version}
-%patch0 -p1
-%patch2 -p1
+%patch -P0 -p1
+%patch -P2 -p1
 
 %build
 %{__aclocal} -I tclconfig
