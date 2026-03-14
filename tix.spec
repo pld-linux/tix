@@ -6,15 +6,19 @@ Summary(pl.UTF-8):	Wiele widgetów (takich jak notepad) dla Tk
 Summary(tr.UTF-8):	Tk için ek arayüz elemanları (not defterleri v.b.)
 Name:		tix
 Version:	%{major}.3
-Release:	3
+Release:	4
 Epoch:		1
 License:	BSD
 Group:		Development/Languages/Tcl
-Source0:	http://download.sourceforge.net/tix/Tix%{version}-src.tar.gz
+Source0:	https://download.sourceforge.net/tix/Tix%{version}-src.tar.gz
 # Source0-md5:	2b8bf4b10a852264678182652f477e59
 Patch0:		%{name}-scriptpaths.patch
-Patch2:		fixInterpResult.patch
-URL:		http://tix.sourceforge.net/
+Patch1:		fixInterpResult.patch
+Patch2:		tix-covscan-fixes.patch
+Patch3:		tix-c89.patch
+Patch4:		tix-implicit-int.patch
+Patch5:		tix-tcl86.patch
+URL:		https://tix.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	groff
@@ -82,7 +86,11 @@ Tix - programy demostracjne.
 %prep
 %setup -q -n Tix%{version}
 %patch -P0 -p1
+%patch -P1 -p1
 %patch -P2 -p1
+%patch -P3 -p1
+%patch -P4 -p1
+%patch -P5 -p1
 
 %build
 %{__aclocal} -I tclconfig

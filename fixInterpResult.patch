@@ -1,3 +1,7 @@
+Fix Tcl interpreter result access to use Tcl_GetStringResult() API
+instead of directly accessing interp->result, which was removed in
+newer Tcl versions.
+
 Index: tix-8.4.3/PyTix-2.0/2.0/_tkinter.c
 ===================================================================
 diff -urNp -x '*.orig' Tix8.4.3.org/PyTix-2.0/2.0/_tkinter.c Tix8.4.3/PyTix-2.0/2.0/_tkinter.c
