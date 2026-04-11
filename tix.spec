@@ -6,7 +6,7 @@ Summary(pl.UTF-8):	Wiele widgetów (takich jak notepad) dla Tk
 Summary(tr.UTF-8):	Tk için ek arayüz elemanları (not defterleri v.b.)
 Name:		tix
 Version:	%{major}.3
-Release:	5
+Release:	6
 Epoch:		1
 License:	BSD
 Group:		Development/Languages/Tcl
@@ -117,6 +117,7 @@ install man/man.macros $RPM_BUILD_ROOT%{_datadir}/groff/%{groff_version}/tmac/ti
 cp -af demos $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/Tix%{major}/bitmaps/mktransgif.tcl*
+rm -f $RPM_BUILD_ROOT%{_libdir}/Tix%{version}/{README.txt,license.terms}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
